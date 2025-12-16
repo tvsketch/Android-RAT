@@ -18,14 +18,18 @@ jobs:
           java-version: 17
 
       - name: Make gradlew executable
-        run: chmod +x gradlew
+        run: |
+          cd Client-Side--Android-RAT
+          chmod +x gradlew
 
       - name: Build APK
-        run: ./gradlew assembleDebug
+        run: |
+          cd Client-Side--Android-RAT 
+          ./gradlew assembleDebug
 
       - name: Upload APK
-    uses: actions/upload-artifact@v4
-    with:
-      name: apk
-      path: |
-        app/build/outputs/apk/debug/*.apk
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: |
+            Client-Side--Android-RAT/app/build/outputs/apk/debug/*.apk
