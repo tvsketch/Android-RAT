@@ -2,8 +2,9 @@
 
 buildscript {
     repositories {
-        jcenter()
-    }
+    google()
+    mavenCentral()
+}
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
 
@@ -13,9 +14,9 @@ buildscript {
 }
 
 allprojects {
-    repositories {
-        jcenter()
-    }
+  repositories {
+    google()
+    mavenCentral()
 }
 
 task clean(type: Delete) {
