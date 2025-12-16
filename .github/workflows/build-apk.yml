@@ -25,19 +25,16 @@ jobs:
           distribution: temurin
           java-version: 8
 
-      - name: Install Gradle 3.3
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y unzip
-          curl -L -o gradle.zip          https://services.gradle.org/distributions/gradle-3.3-all.zip
-    unzip -q gradle.zip -d $HOME/gradle
-    echo "$HOME/gradle/gradle-3.3/bin" >> $GITHUB_PATH
-     
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
+      - name: Install Gradle 3.3
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip curl
+          curl -L -o gradle.zip https://services.gradle.org/distributions/gradle-3.3-all.zip
+          unzip -q gradle.zip -d $HOME/gradle
+          echo "$HOME/gradle/gradle-3.3/bin" >> $GITHUB_PATH
 
       - name: Build APK
         run: gradle :app:assembleDebug
@@ -46,4 +43,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: apk
-          path: Client-Side--AndriodRAT/app/build/outputs/apk/debug/*.apk
+          path: Client-Side-*/app/build/outputs/apk/debug/*.apk
