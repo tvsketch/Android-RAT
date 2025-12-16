@@ -19,12 +19,12 @@ jobs:
 
       - name: Make gradlew executable
         run: |
-          cd Client-Side--Android-RAT
+          cd Client-Side--AndriodRAT
           chmod +x gradlew
 
       - name: Build APK
         run: |
-          cd Client-Side--Android-RAT 
+          cd Client-Side--AndriodRAT 
           ./gradlew assembleDebug
 
       - name: Upload APK
@@ -32,4 +32,4 @@ jobs:
         with:
           name: apk
           path: |
-            Client-Side--Android-RAT/app/build/outputs/apk/debug/*.apk
+            Client-Side--AndriodRAT/app/build/outputs/apk/debug/*.apk
